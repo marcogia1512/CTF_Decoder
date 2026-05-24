@@ -16,20 +16,30 @@ def solve_level_2():
     text_2 = data_bytes.decode("utf-8")
     return text + text_2
 
-
-
-
-
-
-
 def solve_level_3():
-    return ""
+    from base64 import b64decode
+    string_64 = "NjY2YzYxNjc3YjZjMzQ3OTMzNzIzNTVmMzA2ZTVmNmMzNDc5MzM3MjM1N2Q="
+    data_bytes = b64decode(string_64)
+    text_hex = data_bytes.decode("utf-8")
+    string_hex = bytes.fromhex(text_hex)
+    text = string_hex.decode("utf-8")
+    return text
 
 def solve_level_4():
-    return ""
+    from base64 import b64decode
+    string_64 = "Wm14aFozdGlOSE16WDNNeGVIUjVYMll3ZFhKZk1XNWpNM0IwTVRCdWZRPT0="
+    for i in range(2):
+        string_64 = b64decode(string_64)
+        #print(string_64)
+    text = string_64.decode("utf-8")
+    return text
 
 def solve_level_5():
-    return ""
+    string_hex = "7d72337474346d5f73337479625f35647234776b6334627b67616c66"
+    data_bytes = bytes.fromhex(string_hex)
+    data_bytes_inverted = data_bytes[::-1]
+    text = data_bytes_inverted.decode("utf-8")
+    return text
 
 def solve_level_6():
     return ""
@@ -50,4 +60,11 @@ def solve_level_11():
     return ""
 
 def main():
-    ...
+    print("=== CTF DECODER ===")
+    print(f"Level 1: {solve_level_1()}")
+    print(f"Level 2: {solve_level_2()}")
+    print(f"Level 3: {solve_level_3()}")
+    print(f"Level 4: {solve_level_4()}")
+    print(f"Level 5: {solve_level_5()}")
+
+main()
